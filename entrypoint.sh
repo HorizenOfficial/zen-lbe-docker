@@ -33,9 +33,9 @@ chown -R user:user /env /mnt/lbe-css
 if [[ "$1" == uwsgi* ]]; then
     if [[ -v OPTS ]]; then
         exec /usr/local/bin/gosu user /bin/bash -c "$@ $OPTS"
+    else
+        exec /usr/local/bin/gosu user /bin/bash -c "$@"
     fi
-else
-    exec /usr/local/bin/gosu user /bin/bash -c "$@"
 fi
 
 exec /usr/local/bin/gosu user "$@"
